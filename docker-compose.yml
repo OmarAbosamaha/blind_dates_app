@@ -1,0 +1,17 @@
+version: "3"
+services:
+  db:
+    container_name: postgres
+    image: postgres:13
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+  redis:
+    container_name: redis
+    image: redis
+
+volumes:
+  db-data:

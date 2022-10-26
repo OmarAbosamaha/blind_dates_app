@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: root
+  host: <%= ENV.fetch("DB_HOST") { 'localhost' } %>
+
+development:
+  <<: *default
+  database: blind_dates_api_development
+
+test:
+  <<: *default
+  database: blind_dates_api_test
+
+production:
+  <<: *default
+  database: blind_dates_api_production
+  username: blind_dates_api
+  password: <%= ENV['blind_dates_API_DATABASE_PASSWORD'] %>
